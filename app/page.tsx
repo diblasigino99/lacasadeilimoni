@@ -496,8 +496,8 @@ const Waitlist = () => {
                   placeholder="your@address.com"
                   className="w-full bg-transparent font-['Montserrat'] text-[11px] tracking-[0.15em] text-[#1A1A1A] placeholder-[#1A1A1A]/35 py-4 pr-12 outline-none"
                 />
-                <button onClick={handleSubmit} className="absolute right-0 top-1/2 -translate-y-1/2 p-1 group" aria-label="Submit">
-                  <ArrowRight size={14} className="text-[#1A1A1A]/45 group-hover:text-[#1A1A1A]/70 transition-colors duration-300" strokeWidth={1.5} />
+                <button onClick={handleSubmit} className="absolute right-0 top-1/2 -translate-y-1/2 font-['Montserrat'] text-[10px] tracking-[0.45em] text-[#1A1A1A]/70 uppercase border-b border-[#1A1A1A]/40 pb-px hover:text-[#1A1A1A] hover:border-[#1A1A1A] transition-colors duration-300" aria-label="Submit">
+                  Join
                 </button>
               </div>
               <motion.div
