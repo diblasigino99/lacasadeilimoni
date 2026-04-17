@@ -1,26 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap');
+
 @import "tailwindcss";
+@config "../tailwind.config.js";
 
+/* ─── Base ────────────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --canvas:   #F9F9F7;
+  --charcoal: #1A1A1A;
+  --lemon:    #F4D03F;
+  --linen:    #F0EDE4;
+  --mist:     #E8E5DC;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  background-color: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+::-webkit-scrollbar { width: 0; background: transparent; }
+
+/* ─── Selection ─────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(244, 208, 63, 0.25);
+  color: var(--charcoal);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Cursor ─────────────────────────────────────────────────────────────── */
+* { cursor: none; }
+
+.custom-cursor {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--charcoal);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease, opacity 0.3s ease, background 0.3s ease;
+  mix-blend-mode: multiply;
+}
+
+.custom-cursor.hovering {
+  transform: translate(-50%, -50%) scale(3.5);
+  background: var(--lemon);
+  opacity: 0.7;
+}
+
+/* ─── Typography helpers ─────────────────────────────────────────────────── */
+.font-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+.font-sans  { font-family: 'Montserrat', system-ui, sans-serif; }
+
+/* ─── Editorial underline ───────────────────────────────────────────────── */
+.editorial-link {
+  position: relative;
+  display: inline-block;
+}
+.editorial-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--lemon);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.editorial-link:hover::after { transform: scaleX(1); }
+
+/* ─── Noise texture (applied via SVG in component) ──────────────────────── */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0.025;
 }
