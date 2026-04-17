@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "La Casa dei Limoni",
   description: "The Italian Summer in the American Mind",
+  icons: {
+    icon: "/logo-mark.png",
+    apple: "/logo-mark.png",
+  },
 };
 
 export default function RootLayout({

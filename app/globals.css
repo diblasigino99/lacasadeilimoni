@@ -29,7 +29,9 @@ html {
 }
 
 /* ─── Cursor ─────────────────────────────────────────────────────────────── */
-* { cursor: none; }
+@media (pointer: fine) {
+  * { cursor: none; }
+}
 
 .custom-cursor {
   position: fixed;

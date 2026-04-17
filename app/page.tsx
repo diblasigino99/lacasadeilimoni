@@ -42,8 +42,13 @@ const LemonIcon = () => (
 // ─── Custom Cursor ────────────────────────────────────────────────────────
 const CustomCursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      setIsTouch(true);
+      return;
+    }
     const cursor = cursorRef.current;
     if (!cursor) return;
     const move = (e: MouseEvent) => {
@@ -67,6 +72,7 @@ const CustomCursor = () => {
     };
   }, []);
 
+  if (isTouch) return null;
   return <div ref={cursorRef} className="custom-cursor" />;
 };
 
@@ -103,10 +109,11 @@ const Nav = () => {
         <span className="font-['Montserrat'] text-[9px] tracking-[0.35em] text-[#1A1A1A]/40 uppercase">
           Est. MMXXVI
         </span>
-        <div className="absolute left-1/2 -translate-x-1/2">
+        <div className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
           <span className="font-['Cormorant_Garamond'] italic text-[#1A1A1A] text-lg tracking-wide">
             La Casa dei Limoni
           </span>
+          <img src="/logo-mark.png" alt="" style={{ height: "50px" }} className="w-auto opacity-80" />
         </div>
         <span className="font-['Montserrat'] text-[9px] tracking-[0.4em] text-[#1A1A1A]/40 uppercase hidden md:block">
           Archive
@@ -424,17 +431,19 @@ const Acquisition = () => (
           </p>
           <p className="font-['Cormorant_Garamond'] italic text-[#1A1A1A]"
             style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
-            $60
+            $40
           </p>
           <div className="w-6 h-px bg-[#E5E7EB] mx-auto my-8" />
           <p className="font-['Montserrat'] text-[9px] tracking-[0.12em] text-[#1A1A1A]/50 leading-[2.2] mb-10">
             High-resolution master files for personal curation. Instant delivery.
           </p>
           <a
-            href="#waitlist"
+            href="https://lacasadeilimoni.lemonsqueezy.com/checkout/buy/66d27221-80fe-42cf-8829-81b9b273a19d"
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-['Montserrat'] text-[10px] tracking-[0.45em] text-[#1A1A1A]/70 uppercase border-b border-[#1A1A1A]/40 pb-px hover:text-[#1A1A1A] hover:border-[#1A1A1A] transition-colors duration-300"
           >
-            Join Waitlist
+            Acquire
           </a>
         </div>
 
