@@ -211,7 +211,48 @@ const ManifestoCard = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="py-32 px-6 bg-[#F9F9F7] flex items-center justify-center">
+    <section className="py-32 px-6 bg-[#F9F9F7]" style={{ background: `linear-gradient(to bottom, #F9F9F7, ${CAPRI}0D 40%, #F9F9F7)` }}>
+      {/* Manifesto text */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-15%" }}
+        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-3xl mx-auto text-center mb-20"
+      >
+        <motion.div
+          initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="w-8 h-px bg-[#F4D03F] mx-auto mb-14 origin-center"
+        />
+        <p className="font-['Montserrat'] text-[9px] tracking-[0.45em] text-[#1A1A1A]/50 uppercase mb-12">
+          The Manifesto
+        </p>
+        <h2 className="font-['Cormorant_Garamond'] italic text-[#1A1A1A] leading-[1.2] mb-10"
+          style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.5rem)" }}>
+          The American Amalfi.
+        </h2>
+        <h2 className="font-['Cormorant_Garamond'] text-[#1A1A1A]/75 leading-[1.2] mb-14"
+          style={{ fontSize: "clamp(2rem, 4.5vw, 3.8rem)" }}>
+          A study in stillness.
+        </h2>
+        <p className="font-['Montserrat'] text-[11px] leading-[2.4] tracking-[0.08em] text-[#1A1A1A]/60 max-w-lg mx-auto">
+          We do not chase the season. We become it. Each piece is a quiet argument
+          for slowness — cut from the linen of a remembered afternoon,
+          dyed in the color of light on old stone.
+        </p>
+        <motion.div
+          initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+          className="w-8 h-px mx-auto mt-14 origin-center"
+          style={{ background: CAPRI }}
+        />
+      </motion.div>
+
+      {/* Note Card */}
+      <div className="flex justify-center">
       <div className="w-full max-w-[500px]">
         <motion.div
           layout
@@ -291,6 +332,7 @@ const ManifestoCard = () => {
             )}
           </AnimatePresence>
         </motion.div>
+      </div>
       </div>
     </section>
   );
