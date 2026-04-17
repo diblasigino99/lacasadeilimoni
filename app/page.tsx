@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 const CAPRI = "#A8C4D4";
@@ -394,42 +393,78 @@ const TrilogyGrid = () => (
   </section>
 );
 
-// ─── Archive Access ───────────────────────────────────────────────────────
-const ArchiveAccess = () => (
+// ─── Acquisition ──────────────────────────────────────────────────────────
+const Acquisition = () => (
   <section className="py-32 md:py-48 px-8 bg-[#F9F9F7]">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-15%" }}
       transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-      className="max-w-xl mx-auto text-center"
+      className="max-w-4xl mx-auto"
     >
-      <motion.div
-        initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="w-8 h-px bg-[#F4D03F] mx-auto mb-16 origin-center"
-      />
-      <p className="font-['Montserrat'] text-[9px] tracking-[0.45em] text-[#1A1A1A]/50 uppercase mb-8">
-        Digital Archive
+      {/* Header */}
+      <div className="text-center mb-16">
+        <p className="font-['Montserrat'] text-[9px] tracking-[0.45em] text-[#1A1A1A]/50 uppercase mb-4">
+          Acquisition
+        </p>
+        <h3 className="font-['Cormorant_Garamond'] italic text-[#1A1A1A]"
+          style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)" }}>
+          Acquire the Trilogy.
+        </h3>
+      </div>
+
+      {/* Two-tier cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+        {/* Tier 1 — Digital */}
+        <div className="px-10 py-12 text-center" style={{ background: "#FCFCFA", border: "0.5px solid #E5E7EB" }}>
+          <p className="font-['Montserrat'] text-[8px] tracking-[0.45em] text-[#1A1A1A]/40 uppercase mb-6">
+            The Digital Trilogy
+          </p>
+          <p className="font-['Cormorant_Garamond'] italic text-[#1A1A1A]"
+            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+            $60
+          </p>
+          <div className="w-6 h-px bg-[#E5E7EB] mx-auto my-8" />
+          <p className="font-['Montserrat'] text-[9px] tracking-[0.12em] text-[#1A1A1A]/50 leading-[2.2] mb-10">
+            High-resolution master files for personal curation. Instant delivery.
+          </p>
+          <a
+            href="#waitlist"
+            className="font-['Montserrat'] text-[10px] tracking-[0.45em] text-[#1A1A1A]/70 uppercase border-b border-[#1A1A1A]/40 pb-px hover:text-[#1A1A1A] hover:border-[#1A1A1A] transition-colors duration-300"
+          >
+            Join Waitlist
+          </a>
+        </div>
+
+        {/* Tier 2 — Physical */}
+        <div className="px-10 py-12 text-center" style={{ background: "#FCFCFA", border: "0.5px solid #E5E7EB" }}>
+          <p className="font-['Montserrat'] text-[8px] tracking-[0.45em] text-[#1A1A1A]/40 uppercase mb-6">
+            The Physical Series
+          </p>
+          <p className="font-['Cormorant_Garamond'] italic text-[#1A1A1A]"
+            style={{ fontSize: "clamp(2rem, 3.5vw, 3rem)" }}>
+            $180
+          </p>
+          <div className="w-6 h-px bg-[#E5E7EB] mx-auto my-8" />
+          <p className="font-['Montserrat'] text-[9px] tracking-[0.12em] text-[#1A1A1A]/50 leading-[2.2] mb-10">
+            Museum-grade 300gsm textured cotton rag prints. Limited edition of 50.
+          </p>
+          <a
+            href="#waitlist"
+            className="font-['Montserrat'] text-[10px] tracking-[0.45em] text-[#1A1A1A]/30 uppercase border-b border-[#1A1A1A]/15 pb-px cursor-not-allowed"
+            onClick={(e) => e.preventDefault()}
+          >
+            Coming Soon
+          </a>
+        </div>
+      </div>
+
+      {/* Disclaimer */}
+      <p className="text-center font-['Montserrat'] text-[8px] tracking-[0.3em] text-[#1A1A1A]/30 uppercase mt-10">
+        Physical editions are hand-numbered and shipped from New York.
       </p>
-      <h3 className="font-['Cormorant_Garamond'] italic text-[#1A1A1A] mb-6"
-        style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)" }}>
-        Acquire the Trilogy.
-      </h3>
-      <p className="font-['Montserrat'] text-[10px] leading-[2.2] tracking-[0.06em] text-[#1A1A1A]/55 mb-6 max-w-sm mx-auto">
-        The Digital Archive Vol. I includes high-resolution master files of the complete series for personal curation.
-      </p>
-      <p className="font-['Cormorant_Garamond'] text-[#1A1A1A]/75 mb-12"
-        style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>
-        $60
-      </p>
-      <a
-        href="#"
-        className="inline-flex items-center gap-3 font-['Montserrat'] text-[9px] tracking-[0.35em] text-[#1A1A1A]/60 uppercase border-b border-[#1A1A1A]/20 pb-1 hover:text-[#1A1A1A] hover:border-[#1A1A1A]/60 transition-all duration-300"
-      >
-        Acquire <ArrowRight size={10} strokeWidth={1.5} />
-      </a>
     </motion.div>
   </section>
 );
@@ -544,7 +579,7 @@ export default function Page() {
       <Hero />
       <ManifestoCard />
       <TrilogyGrid />
-      <ArchiveAccess />
+      <Acquisition />
       <Waitlist />
       <Footer />
     </main>
